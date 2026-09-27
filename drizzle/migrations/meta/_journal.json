@@ -8,6 +8,13 @@
       "when": 1790546816121,
       "tag": "0000_njaz_foundation_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790546901596,
+      "tag": "0001_njaz_storage_policies",
+      "breakpoints": true
     }
   ]
 }

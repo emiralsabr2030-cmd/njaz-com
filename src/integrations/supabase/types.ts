@@ -1073,6 +1073,7 @@ export type Database = {
       }
       is_job_public: { Args: { _job_id: string }; Returns: boolean }
       is_staff: { Args: { _user_id: string }; Returns: boolean }
+      try_uuid: { Args: { _t: string }; Returns: string }
     }
     Enums: {
       app_role:
