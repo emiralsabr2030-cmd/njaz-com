@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790546816121,
+      "tag": "0000_njaz_foundation_schema",
+      "breakpoints": true
+    }
+  ]
 }
