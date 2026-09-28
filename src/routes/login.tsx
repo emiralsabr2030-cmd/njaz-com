@@ -28,7 +28,7 @@ function Login() {
     setBusy(true);
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     setBusy(false);
-    if (error) return toast.error("بيانات الدخول غير صحيحة");
+    if (error) { toast.error("بيانات الدخول غير صحيحة"); return; }
     const roles = await fetchRoles(data.user.id);
     navigate({ to: safeRedirect(redirect) ?? homeForRoles(roles) });
   };

@@ -27,15 +27,15 @@ function Register() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!agree) return toast.error("يجب الموافقة على الشروط وسياسة الخصوصية");
-    if (password.length < 8) return toast.error("كلمة المرور 8 أحرف على الأقل");
+    if (!agree) { toast.error("يجب الموافقة على الشروط وسياسة الخصوصية"); return; }
+    if (password.length < 8) { toast.error("كلمة المرور 8 أحرف على الأقل"); return; }
     setBusy(true);
     const { error } = await supabase.auth.signUp({
       email, password,
       options: { emailRedirectTo: window.location.origin, data: { full_name: name, account_type: type === "employer" ? "COMPANY_OWNER" : "JOB_SEEKER" } },
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setDone(true);
   };
 
