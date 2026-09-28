@@ -63,7 +63,8 @@ export function JobForm({
       const errs: Errors = {};
       for (const i of r.error.issues) errs[String(i.path[0])] ??= i.message;
       setErrors(errs);
-      document.getElementById(Object.keys(errs)[0])?.focus();
+      const first = Object.keys(errs)[0];
+      if (first) document.getElementById(first)?.focus();
       return;
     }
     setErrors({});
