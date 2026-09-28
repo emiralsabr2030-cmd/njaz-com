@@ -35,10 +35,7 @@ function Page() {
   );
   return (
     <div>
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <PageHeader title="وظائف الشركة" />
-        {add}
-      </div>
+      <PageHeader title="وظائف الشركة" actions={add} />
       {q.isLoading ? <LoadingBlock /> : q.data?.length ? (
         <ul className="space-y-2">
           {q.data.map((j) => (

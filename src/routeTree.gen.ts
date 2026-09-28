@@ -38,6 +38,7 @@ import { Route as AuthenticatedDashboardApplicationsRouteImport } from './routes
 import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_authenticated/dashboard.profile'
 import { Route as AuthenticatedDashboardSavedJobsRouteImport } from './routes/_authenticated/dashboard.saved-jobs'
 import { Route as AuthenticatedCompanyJobsIndexRouteImport } from './routes/_authenticated/company.jobs.index'
+import { Route as AuthenticatedCompanyJobsJobIdRouteImport } from './routes/_authenticated/company.jobs.$jobId'
 import { Route as AuthenticatedCompanyJobsNewRouteImport } from './routes/_authenticated/company.jobs.new'
 
 const IndexRoute = IndexRouteImport.update({
@@ -194,6 +195,12 @@ const AuthenticatedCompanyJobsIndexRoute =
     path: '/jobs/',
     getParentRoute: () => AuthenticatedCompanyRoute,
   } as any)
+const AuthenticatedCompanyJobsJobIdRoute =
+  AuthenticatedCompanyJobsJobIdRouteImport.update({
+    id: '/jobs/$jobId',
+    path: '/jobs/$jobId',
+    getParentRoute: () => AuthenticatedCompanyRoute,
+  } as any)
 const AuthenticatedCompanyJobsNewRoute =
   AuthenticatedCompanyJobsNewRouteImport.update({
     id: '/jobs/new',
@@ -229,6 +236,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/company/': typeof AuthenticatedCompanyIndexRoute
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/company/jobs/$jobId': typeof AuthenticatedCompanyJobsJobIdRoute
   '/company/jobs/new': typeof AuthenticatedCompanyJobsNewRoute
   '/company/jobs/': typeof AuthenticatedCompanyJobsIndexRoute
 }
@@ -257,6 +265,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/company': typeof AuthenticatedCompanyIndexRoute
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
+  '/company/jobs/$jobId': typeof AuthenticatedCompanyJobsJobIdRoute
   '/company/jobs/new': typeof AuthenticatedCompanyJobsNewRoute
   '/company/jobs': typeof AuthenticatedCompanyJobsIndexRoute
 }
@@ -290,6 +299,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/company/': typeof AuthenticatedCompanyIndexRoute
   '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
+  '/_authenticated/company/jobs/$jobId': typeof AuthenticatedCompanyJobsJobIdRoute
   '/_authenticated/company/jobs/new': typeof AuthenticatedCompanyJobsNewRoute
   '/_authenticated/company/jobs/': typeof AuthenticatedCompanyJobsIndexRoute
 }
@@ -323,6 +333,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/company/'
     | '/dashboard/'
+    | '/company/jobs/$jobId'
     | '/company/jobs/new'
     | '/company/jobs/'
   fileRoutesByTo: FileRoutesByTo
@@ -351,6 +362,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/company'
     | '/dashboard'
+    | '/company/jobs/$jobId'
     | '/company/jobs/new'
     | '/company/jobs'
   id:
@@ -383,6 +395,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/'
     | '/_authenticated/company/'
     | '/_authenticated/dashboard/'
+    | '/_authenticated/company/jobs/$jobId'
     | '/_authenticated/company/jobs/new'
     | '/_authenticated/company/jobs/'
   fileRoutesById: FileRoutesById
@@ -608,6 +621,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCompanyJobsIndexRouteImport
       parentRoute: typeof AuthenticatedCompanyRoute
     }
+    '/_authenticated/company/jobs/$jobId': {
+      id: '/_authenticated/company/jobs/$jobId'
+      path: '/jobs/$jobId'
+      fullPath: '/company/jobs/$jobId'
+      preLoaderRoute: typeof AuthenticatedCompanyJobsJobIdRouteImport
+      parentRoute: typeof AuthenticatedCompanyRoute
+    }
     '/_authenticated/company/jobs/new': {
       id: '/_authenticated/company/jobs/new'
       path: '/jobs/new'
@@ -642,6 +662,7 @@ const AuthenticatedAdminRouteWithChildren =
 interface AuthenticatedCompanyRouteChildren {
   AuthenticatedCompanyApplicationsRoute: typeof AuthenticatedCompanyApplicationsRoute
   AuthenticatedCompanyIndexRoute: typeof AuthenticatedCompanyIndexRoute
+  AuthenticatedCompanyJobsJobIdRoute: typeof AuthenticatedCompanyJobsJobIdRoute
   AuthenticatedCompanyJobsNewRoute: typeof AuthenticatedCompanyJobsNewRoute
   AuthenticatedCompanyJobsIndexRoute: typeof AuthenticatedCompanyJobsIndexRoute
 }
@@ -649,6 +670,7 @@ interface AuthenticatedCompanyRouteChildren {
 const AuthenticatedCompanyRouteChildren: AuthenticatedCompanyRouteChildren = {
   AuthenticatedCompanyApplicationsRoute: AuthenticatedCompanyApplicationsRoute,
   AuthenticatedCompanyIndexRoute: AuthenticatedCompanyIndexRoute,
+  AuthenticatedCompanyJobsJobIdRoute: AuthenticatedCompanyJobsJobIdRoute,
   AuthenticatedCompanyJobsNewRoute: AuthenticatedCompanyJobsNewRoute,
   AuthenticatedCompanyJobsIndexRoute: AuthenticatedCompanyJobsIndexRoute,
 }
