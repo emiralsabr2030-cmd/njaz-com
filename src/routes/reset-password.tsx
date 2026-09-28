@@ -15,9 +15,9 @@ export const Route = createFileRoute("/reset-password")({
       <PublicLayout>
         <form className="mx-auto mt-14 max-w-md space-y-4 rounded-2xl border bg-card p-6" onSubmit={async (e) => {
           e.preventDefault();
-          if (pw.length < 8) return toast.error("8 أحرف على الأقل");
+          if (pw.length < 8) { toast.error("8 أحرف على الأقل"); return; }
           const { error } = await supabase.auth.updateUser({ password: pw });
-          if (error) return toast.error("انتهت صلاحية الرابط");
+          if (error) { toast.error("انتهت صلاحية الرابط"); return; }
           toast.success("تم التحديث");
           navigate({ to: "/login" });
         }}>

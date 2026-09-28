@@ -24,7 +24,7 @@ function Page() {
       <PageHeader title="وظائف الشركة" />
       {q.isLoading ? <LoadingBlock /> : q.data?.length ? (
         <ul className="space-y-2">{q.data.map((r, i) => (
-          <li key={i} className="rounded-xl border bg-card p-4 text-sm">{String(r.title ?? r.name ?? r.full_name ?? r.reason ?? r.status ?? r.id ?? "")}</li>
+          <li key={i} className="rounded-xl border bg-card p-4 text-sm">{String(r["title"] ?? r["name"] ?? r["full_name"] ?? r["reason"] ?? r["status"] ?? r["id"] ?? "")}</li>
         ))}</ul>
       ) : <EmptyState icon={Inbox} title="لا توجد بيانات بعد" />}
     </div>
