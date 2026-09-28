@@ -1,0 +1,3 @@
+ALTER TABLE public.jobs ADD CONSTRAINT jobs_salary_nonneg CHECK ((salary_min IS NULL OR salary_min >= 0) AND (salary_max IS NULL OR salary_max >= 0)) NOT VALID;
+ALTER TABLE public.jobs ADD CONSTRAINT jobs_salary_range CHECK (salary_min IS NULL OR salary_max IS NULL OR salary_min <= salary_max) NOT VALID;
+ALTER TABLE public.jobs ADD CONSTRAINT jobs_title_len CHECK (char_length(title) BETWEEN 3 AND 150) NOT VALID;

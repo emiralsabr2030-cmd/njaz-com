@@ -34,7 +34,7 @@ export function DashboardShell({ title, nav }: { title: string; nav: ShellNavIte
           </Button>
         </nav>
       </aside>
-      <main id="main" className="mx-auto w-full max-w-5xl p-4 sm:p-8">
+      <main id="main" className="mx-auto w-full min-w-0 max-w-5xl p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-8">
         <Outlet />
       </main>
     </div>

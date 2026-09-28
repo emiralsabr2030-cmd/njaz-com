@@ -15,6 +15,13 @@
       "when": 1790546901596,
       "tag": "0001_njaz_storage_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790604275417,
+      "tag": "0002_jobs_salary_checks",
+      "breakpoints": true
     }
   ]
 }

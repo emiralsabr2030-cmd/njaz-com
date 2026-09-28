@@ -134,11 +134,31 @@
   }
   html {
     font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    min-width: 320px;
+  }
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+  @media (min-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: 0.875rem;
+    }
   }
   :lang(en),
   .font-latin {
