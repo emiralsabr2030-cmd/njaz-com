@@ -5,7 +5,8 @@ import { toast } from "sonner";
 import { FileQuestion } from "lucide-react";
 import { PageHeader } from "@/components/layout/PublicLayout";
 import { EmptyState, LoadingBlock } from "@/components/common/EmptyState";
-import { JobForm, dbErrorAr, toRow } from "@/components/jobs/JobForm";
+import { dbErrorAr, toRow } from "@/components/jobs/JobForm";
+import { JobEditor } from "@/components/jobs/JobEditor";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -61,7 +62,7 @@ function Page() {
           </>
         )}
       </div>
-      <JobForm
+      <JobEditor
         key={j.updated_at}
         companies={companies.data ?? []}
         defaults={j}
