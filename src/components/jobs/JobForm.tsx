@@ -44,12 +44,14 @@ export function JobForm({
   saving,
   onSave,
   showPublish,
+  onChange,
 }: {
   companies: { id: string; name: string }[];
   defaults?: JobDefaults;
   saving: boolean;
   onSave: (v: JobValues, publish: boolean) => void;
   showPublish?: boolean;
+  onChange?: (raw: Record<string, string>) => void;
 }) {
   const [errors, setErrors] = useState<Errors>({});
   const d = (k: keyof JobDefaults) => (defaults?.[k] ?? "") as string;
@@ -76,7 +78,7 @@ export function JobForm({
   const aria = (k: string) => ({ "aria-invalid": !!errors[k] || undefined, "aria-describedby": errors[k] ? `${k}-err` : undefined });
 
   return (
-    <form onSubmit={submit} noValidate className="space-y-4 rounded-xl border bg-card p-4 sm:p-6">
+    <form onSubmit={submit} onChange={(e) => onChange?.(Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>)} noValidate className="space-y-4 rounded-xl border bg-card p-4 sm:p-6">
       <div className="space-y-2">
         <Label htmlFor="company_id">الشركة *</Label>
         <select id="company_id" name="company_id" defaultValue={d("company_id")} className={selectCls} {...aria("company_id")}>
@@ -139,13 +141,7 @@ export function JobForm({
   );
 }
 
-export function dbErrorAr(msg: string) {
-  if (/row-level security|permission/i.test(msg)) return "ليست لديك صلاحية لإدارة وظائف هذه الشركة";
-  if (/salary_range/.test(msg)) return "الحد الأعلى للراتب يجب أن يكون أكبر من الحد الأدنى";
-  if (/salary_nonneg/.test(msg)) return "الراتب لا يمكن أن يكون سالبًا";
-  if (/title_len/.test(msg)) return "عنوان الوظيفة غير صالح";
-  return "حدث خطأ غير متوقع، حاول مرة أخرى";
-}
+export { dbErrorAr } from "@/lib/company";
 
 export function toRow(v: JobValues) {
   return {

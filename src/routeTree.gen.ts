@@ -33,6 +33,7 @@ import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedCompanyIndexRouteImport } from './routes/_authenticated/company.index'
 import { Route as AuthenticatedCompanyApplicationsRouteImport } from './routes/_authenticated/company.applications'
+import { Route as AuthenticatedCompanySetupRouteImport } from './routes/_authenticated/company.setup'
 import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard.index'
 import { Route as AuthenticatedDashboardApplicationsRouteImport } from './routes/_authenticated/dashboard.applications'
 import { Route as AuthenticatedDashboardProfileRouteImport } from './routes/_authenticated/dashboard.profile'
@@ -165,6 +166,12 @@ const AuthenticatedCompanyApplicationsRoute =
     path: '/applications',
     getParentRoute: () => AuthenticatedCompanyRoute,
   } as any)
+const AuthenticatedCompanySetupRoute =
+  AuthenticatedCompanySetupRouteImport.update({
+    id: '/setup',
+    path: '/setup',
+    getParentRoute: () => AuthenticatedCompanyRoute,
+  } as any)
 const AuthenticatedDashboardIndexRoute =
   AuthenticatedDashboardIndexRouteImport.update({
     id: '/',
@@ -230,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/company/applications': typeof AuthenticatedCompanyApplicationsRoute
+  '/company/setup': typeof AuthenticatedCompanySetupRoute
   '/dashboard/applications': typeof AuthenticatedDashboardApplicationsRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/saved-jobs': typeof AuthenticatedDashboardSavedJobsRoute
@@ -259,6 +267,7 @@ export interface FileRoutesByTo {
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/company/applications': typeof AuthenticatedCompanyApplicationsRoute
+  '/company/setup': typeof AuthenticatedCompanySetupRoute
   '/dashboard/applications': typeof AuthenticatedDashboardApplicationsRoute
   '/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/dashboard/saved-jobs': typeof AuthenticatedDashboardSavedJobsRoute
@@ -293,6 +302,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/company/applications': typeof AuthenticatedCompanyApplicationsRoute
+  '/_authenticated/company/setup': typeof AuthenticatedCompanySetupRoute
   '/_authenticated/dashboard/applications': typeof AuthenticatedDashboardApplicationsRoute
   '/_authenticated/dashboard/profile': typeof AuthenticatedDashboardProfileRoute
   '/_authenticated/dashboard/saved-jobs': typeof AuthenticatedDashboardSavedJobsRoute
@@ -327,6 +337,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/users'
     | '/company/applications'
+    | '/company/setup'
     | '/dashboard/applications'
     | '/dashboard/profile'
     | '/dashboard/saved-jobs'
@@ -356,6 +367,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/users'
     | '/company/applications'
+    | '/company/setup'
     | '/dashboard/applications'
     | '/dashboard/profile'
     | '/dashboard/saved-jobs'
@@ -389,6 +401,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/settings'
     | '/_authenticated/admin/users'
     | '/_authenticated/company/applications'
+    | '/_authenticated/company/setup'
     | '/_authenticated/dashboard/applications'
     | '/_authenticated/dashboard/profile'
     | '/_authenticated/dashboard/saved-jobs'
@@ -586,6 +599,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCompanyApplicationsRouteImport
       parentRoute: typeof AuthenticatedCompanyRoute
     }
+    '/_authenticated/company/setup': {
+      id: '/_authenticated/company/setup'
+      path: '/setup'
+      fullPath: '/company/setup'
+      preLoaderRoute: typeof AuthenticatedCompanySetupRouteImport
+      parentRoute: typeof AuthenticatedCompanyRoute
+    }
     '/_authenticated/dashboard/': {
       id: '/_authenticated/dashboard/'
       path: '/'
@@ -661,6 +681,7 @@ const AuthenticatedAdminRouteWithChildren =
 
 interface AuthenticatedCompanyRouteChildren {
   AuthenticatedCompanyApplicationsRoute: typeof AuthenticatedCompanyApplicationsRoute
+  AuthenticatedCompanySetupRoute: typeof AuthenticatedCompanySetupRoute
   AuthenticatedCompanyIndexRoute: typeof AuthenticatedCompanyIndexRoute
   AuthenticatedCompanyJobsJobIdRoute: typeof AuthenticatedCompanyJobsJobIdRoute
   AuthenticatedCompanyJobsNewRoute: typeof AuthenticatedCompanyJobsNewRoute
@@ -669,6 +690,7 @@ interface AuthenticatedCompanyRouteChildren {
 
 const AuthenticatedCompanyRouteChildren: AuthenticatedCompanyRouteChildren = {
   AuthenticatedCompanyApplicationsRoute: AuthenticatedCompanyApplicationsRoute,
+  AuthenticatedCompanySetupRoute: AuthenticatedCompanySetupRoute,
   AuthenticatedCompanyIndexRoute: AuthenticatedCompanyIndexRoute,
   AuthenticatedCompanyJobsJobIdRoute: AuthenticatedCompanyJobsJobIdRoute,
   AuthenticatedCompanyJobsNewRoute: AuthenticatedCompanyJobsNewRoute,
