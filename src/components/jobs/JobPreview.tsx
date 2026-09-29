@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export type PreviewValues = Record<string, string | number | null | undefined>;
 
-export function JobPreview({ values, companyName, city }: { values: PreviewValues; companyName?: string; city?: string }) {
+export function JobPreview({ values, companyName, city }: { values: PreviewValues; companyName?: string | undefined; city?: string | undefined }) {
   const [device, setDevice] = useState<"mobile" | "desktop">("mobile");
   const s = (k: string) => String(values[k] ?? "").trim();
   const min = s("salary_min"), max = s("salary_max");
