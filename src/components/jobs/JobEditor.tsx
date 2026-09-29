@@ -7,9 +7,9 @@ import type { MyCompany } from "@/lib/company";
 /** Job form + live responsive preview (phone / desktop) before publishing. */
 export function JobEditor({ companies, defaults, saving, showPublish, onSave }: {
   companies: MyCompany[];
-  defaults?: JobDefaults;
+  defaults?: JobDefaults | undefined;
   saving: boolean;
-  showPublish?: boolean;
+  showPublish?: boolean | undefined;
   onSave: (v: JobValues, publish: boolean) => void;
 }) {
   const [values, setValues] = useState<PreviewValues>({ company_id: companies[0]?.id, employment_type: "FULL_TIME", work_mode: "ONSITE", ...defaults });

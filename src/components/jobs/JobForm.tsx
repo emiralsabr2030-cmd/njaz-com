@@ -47,10 +47,10 @@ export function JobForm({
   onChange,
 }: {
   companies: { id: string; name: string }[];
-  defaults?: JobDefaults;
+  defaults?: JobDefaults | undefined;
   saving: boolean;
   onSave: (v: JobValues, publish: boolean) => void;
-  showPublish?: boolean;
+  showPublish?: boolean | undefined;
   onChange?: (raw: Record<string, string>) => void;
 }) {
   const [errors, setErrors] = useState<Errors>({});
