@@ -15,7 +15,7 @@ export const isAdmin = (roles: AppRole[]) => roles.includes("ADMIN") || roles.in
 export const isEmployer = (roles: AppRole[]) => roles.some((r) => EMPLOYER_ROLES.includes(r));
 
 export function homeForRoles(roles: AppRole[]): "/admin" | "/company" | "/dashboard" {
-  if (isStaff(roles)) return "/admin";
+  if (isAdmin(roles)) return "/admin";
   if (isEmployer(roles)) return "/company";
   return "/dashboard";
 }

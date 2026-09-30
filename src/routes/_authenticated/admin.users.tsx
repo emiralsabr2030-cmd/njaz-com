@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Users } from "lucide-react";
 import { PageHeader } from "@/components/layout/PublicLayout";
 import { EmptyState, LoadingBlock } from "@/components/common/EmptyState";
-import { Row, SearchBox, selectCls } from "@/components/common/ui-bits";
+import { SearchBox, selectCls } from "@/components/common/ui-bits";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -91,4 +91,3 @@ function Page() {
   );
 }
 
-export { Row };
