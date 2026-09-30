@@ -36,7 +36,7 @@ function Page() {
     },
   });
   async function save(id: string, status: S) {
-    const { error } = await supabase.from("reports").update({ status, handled_by: user.id, resolution_note: notes[id] ?? undefined }).eq("id", id);
+    const { error } = await supabase.from("reports").update({ status, handled_by: user.id, ...(notes[id] !== undefined ? { resolution_note: notes[id] } : {}) }).eq("id", id);
     if (error) return void toast.error("تعذّر تحديث البلاغ", { description: dbErrorAr(error.message) });
     toast.success("تم تحديث البلاغ");
     qc.invalidateQueries({ queryKey: ["admin.reports"] });
